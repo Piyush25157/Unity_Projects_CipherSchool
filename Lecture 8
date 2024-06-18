@@ -1,0 +1,57 @@
+*******void function*******
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Functions : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        add();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    //Customise function
+    public void add()
+    {
+        Debug.Log("This is an add function");
+    }
+}
+
+
+*******int function*******
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Functions : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log(add(2, 4));
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    //Customise function
+    public int add(int x, int y)
+    {
+        int result = x + y;
+        return result;
+    }
+}
