@@ -1,3 +1,5 @@
+********else if*******
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +21,42 @@ public class Else_If : MonoBehaviour
         else
         {
             Debug.Log("You are a senior citizen");
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+
+*******Switch Case*******
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Else_If : MonoBehaviour
+{
+    public int score;
+    // Start is called before the first frame update
+    void Start()
+    {
+        switch (score)
+        {
+            case 10:
+                Debug.Log("score is full");
+                break;
+            case 5:
+                Debug.Log("score is half");
+                break;
+            default:
+                Debug.Log("score is not enough");
+                break;
         }
     }
 
