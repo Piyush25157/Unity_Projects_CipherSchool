@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelManager : MonoBehaviour
+{
+    public GameObject ballPrefab;
+    public Transform instantiatePosition;
+    void Start()
+    {
+        Instantiate(ballPrefab, instantiatePosition.position, Quaternion.identity);
+
+    }
+
+   
+}
