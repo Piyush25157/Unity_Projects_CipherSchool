@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Gameplay_Manager : MonoBehaviour
+{
+    [SerializeField] GameObject targetPrefab;
+
+    private void Start()
+    {
+        InvokeRepeating("SpawnTarget", 2f, 2f);
+    }
+    void SpawnTarget()
+    {
+        float xPos = Random.Range(-12.09f , 12.17f);
+        float yPos = Random.Range(-3.9f , 3.9f);
+
+        Vector3 randomTargetPos = new Vector3(xPos, yPos, 0);
+
+        Instantiate(targetPrefab, randomTargetPos, Quaternion.identity);
+
+
+    }
+
+}
