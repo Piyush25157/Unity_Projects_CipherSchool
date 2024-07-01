@@ -1,0 +1,72 @@
+**Gameplay_Manager**
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class Gameplay_Manager : MonoBehaviour
+{
+    public static Gameplay_Manager instance;
+
+    [SerializeField] GameObject targetPrefab;
+
+    int score = 0;
+
+    [SerializeField] Text scoretext;
+
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+    }
+    private void Start()
+    {
+        InvokeRepeating("SpawnTarget", 1f, 1f);
+    }
+    void SpawnTarget()
+    {
+        float xPos = Random.Range(-12.09f , 12.17f);
+        float yPos = Random.Range(-3.9f , 3.9f);
+
+        Vector3 randomTargetPos = new Vector3(xPos, yPos, 0);
+
+        Instantiate(targetPrefab, randomTargetPos, Quaternion.identity);
+    }
+
+    public void IncrementScore()
+    {
+        score++;
+        scoretext.text = score.ToString();
+        Debug.Log("Score: " +  score);
+    }
+
+}
+
+**********-----------------------***********
+
+**Ship_Manager**
+
+
+using UnityEngine;
+
+public class Ship_Manager : MonoBehaviour
+{
+    public void Start()
+    {
+        Destroy(gameObject, 2.5f);
+    }
+
+
+    private void OnMouseDown()
+    {
+        Debug.Log("Hit");
+        Gameplay_Manager.instance.IncrementScore();
+        Destroy(gameObject);
+    }
+}
