@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class Gameplay_Manager : MonoBehaviour
+{
+    public static Gameplay_Manager instance;
+
+    [SerializeField] GameObject targetPrefab;
+    [SerializeField] GameObject winPanel;
+
+    int score = 0;
+    bool hasWon = false;
+
+    [SerializeField] Text scoretext;
+   
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+    }
+    private void Start()
+    {
+        winPanel.SetActive(false);  
+        InvokeRepeating("SpawnTarget", 1f, 1f);
+    }
+
+    private void Update()
+    {
+        if (hasWon) 
+        {
+            CancelInvoke("SpawnTarget");
+        }
+    }
+    void SpawnTarget()
+    {
+        float xPos = Random.Range(-12.09f , 12.17f);
+        float yPos = Random.Range(-3.9f , 3.9f);
+
+        Vector3 randomTargetPos = new Vector3(xPos, yPos, 0);
+
+        Instantiate(targetPrefab, randomTargetPos, Quaternion.identity);
+    }
+
+    public void IncrementScore()
+    {
+        score++;
+        scoretext.text = score.ToString();
+
+        if(score >= 25)
+        {
+            winPanel.SetActive(true);
+            hasWon = true;
+        }
+        Debug.Log("Score: " +  score);
+    }
+
+}
